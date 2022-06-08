@@ -1,0 +1,682 @@
+---------------------------------------------------------------------------
+CAPITULO 4: Funciones
+---------------------------------------------------------------------------
+
+prueba = "Hello"
+
+try:
+	valor = int(prueba)
+except Exception as e:
+	valor = -1
+
+print("First", valor)
+
+prueba = "123"
+try:
+	valor = int(prueba)
+except Exception as e:
+	valor = -1
+
+print("Second", valor)
+
+---------------------------------------------------------------------------
+rawstr = input ("Ingrese un número: ")
+
+try:
+	ival = int (rawstr)
+
+except:
+	ival = -1
+
+if ival>0:
+	print ("Nice Work")
+else:
+	print ("Not a number")
+
+---------------------------------------------------------------------------
+CAPITULO 5: Iteraciones
+---------------------------------------------------------------------------
+
+a = [5,4,3,2,1]
+
+for x in a:
+	print (x)
+
+print ("Blastoff!")
+
+b = ["Kevin", "Rava", "Negro"]
+
+
+for amigo in b:
+	print ("Happy New Year", amigo)
+
+
+num = [32, 55, 2, 1, 93, 120, 34, 18]
+
+def max_num(arr):
+	resultado = 0
+
+	for val in arr:
+		if val > resultado:
+			resultado = val
+
+		print (val, resultado)
+
+	return resultado
+
+print("El número más grande es: ",max_num(num))
+
+def suma_num(arr):
+	resultado=0
+	for val in arr:
+		resultado = val + resultado
+
+		print (val, resultado)
+
+	return resultado
+
+print("La suma de los números es: ",suma_num(num))
+
+def min_num(arr):
+	resultado = arr[0]
+
+	for val in arr:
+		if val < resultado:
+			resultado = val
+
+		print (val, resultado)
+
+	return resultado
+
+print("El número más chico es: ",min_num(num))
+
+---------------------------------------------------------------------------
+CAPITULO 6: Strings
+---------------------------------------------------------------------------
+a = "Banana"
+
+res = 0
+
+for letra in a:
+	if letra == "a":
+		res = res + 1
+
+
+print ("La palabra",a,"tiene",res,"letras 'a'")
+
+def nompropio(palabra):
+
+	return palabra[0].upper()+palabra[1:].lower()
+
+
+euge_ok = nompropio ("euGeNiO")
+print (euge_ok)
+
+euge_mal = euge_ok.replace("e", "uu")
+print(euge_mal)
+
+---------------------------------------------------------------------------
+CAPITULO 7: Files
+---------------------------------------------------------------------------
+mhandle = open ("mbox.txt")
+
+print (mhandle)
+# for cheese in mhandle:
+# 	print (cheese)
+
+#inp = mhandle.read()
+#print (len(inp))
+#print(inp[:20])
+
+for line in mhandle:
+	if line.startswith("From:"):
+		#print(line.replace("\n",""))
+		print(line.strip())
+
+---------------------------------------------------------------------------
+CAPITULO 8: Lists
+---------------------------------------------------------------------------
+
+ls = []
+ls.append ("Artime")
+ls.append ("Emma")
+
+print (ls)
+
+print ("Artime" in ls)
+print ("Ceci" in ls)
+
+ls.append ("Ceci")
+print ("Ceci" in ls)
+
+
+ls.sort()
+print (ls)
+
+print (max(ls))
+
+han = open("mbox-short.txt")
+
+for line in han:
+	line = line.strip()
+
+	if line is None: continue
+
+	wrd = line.split()
+
+	if len (wrd) == 0: continue
+	if wrd[0] != "From:": continue
+
+	pieces = wrd [1].split("@")
+
+	print (pieces[1])
+
+# Ahora imprimo el día
+han = open("mbox-short.txt")
+for line in han:
+	line = line.strip()
+
+	wrd = line.split()
+
+	if len (wrd)<3 or wrd[0] !="From" : continue
+
+	print (wrd[2])
+
+---------------------------------------------------------------------------
+CAPITULO 9: Dictionaries
+---------------------------------------------------------------------------
+dic = {'name': 'Artime', 'age':41, 'bornt': '03/06/1980'}
+
+print (dic['name'])
+print (dic['age'])
+print (dic['bornt'])
+
+print (dic)
+
+x = dic.get('name',"")
+print(x)
+
+x = dic.get('borntd',"01/01/1950")
+print(x)
+
+#-------------------------
+count = dict()
+
+names = ['Lucas', 'Adrián', 'Ceci', 'Artime', 'Adrián', 'Adrián', 'Lucas', 'Ceci', 'Ceci', 'Ceci']
+
+for name in names:
+	count [name] = count.get(name, 0) + 1
+
+print (count)
+
+#-------------------------
+texto = input ('Escriba un texto: ')
+
+palabras = texto.split()
+
+#print ('Palabras:', palabras)
+
+count2 = dict ()
+for name in palabras:
+	count2 [name] = count2.get(name, 0) + 1
+
+#print ("Conteo: ", count2)
+for k in count2:
+	if count2[k] > 1: print (k, count2[k])
+#-------------------------------------------
+bigword = None
+bigcount = 0
+segundo = None
+segcnt = 0
+
+for wrd,cnt in count2.items():
+	if cnt > bigcount:
+		# Grabo el segundo
+		if bigcount > 0:
+			segundo = bigword
+			segcnt = bigcount
+
+		bigword = wrd
+		bigcount =cnt
+
+print ('La palabra más usada es:"', bigword,'", fue usada',bigcount,'veces')
+print ('La segunda palabra más usada es:"', segundo,'", fue usada',segcnt,'veces')
+
+#-------------------------------------------
+print (list(dic))
+print (dic.keys())
+
+print (dic.values())
+print (dic.items())
+# ----------------------------------------
+
+for aa, bb in dic.items():
+	print (aa, bb)
+
+------------------------------------------------------------------
+
+palabras = list()
+words = dict()
+cantpl = 0
+bigPa = None
+bigCnt = 0
+
+fname = input ("Enter filename: ")
+
+if len(fname) < 1: fname = 'clown.txt'
+
+hand = open(fname)
+
+for linea in hand:
+	palabras = linea.split()
+
+	for word in palabras:
+		words[word] = words.get(word,0) + 1
+
+		if words[word] > bigCnt:
+			bigPa = word
+			bigCnt = words[word]
+
+
+		cantpl = cantpl + 1
+
+print (words)
+print ("El total de palabras es:", cantpl)
+print ("La palabra más usada es:", bigPa, bigCnt,"veces")
+
+---------------------------------------------------------------------------
+CAPITULO 10: Tuples
+---------------------------------------------------------------------------
+d = {'a': 10, 'c': 30, 'b': 1}
+t = sorted(d.items())
+print (t)
+for k, v in t:
+	print (k, v)
+
+u = sorted(t, reverse=True)
+print (u)
+for k, v in u:
+	print (k, v)
+
+print ('------------------------------------')
+
+
+# Top 10 palabras más usadas
+fhand = open("nov_rain.txt")
+counts = dict()
+
+for linea in fhand:
+	palabras = linea.split()
+
+	for palabra in palabras:
+		counts [palabra] = counts.get(palabra, 0) + 1
+
+lst = list ()
+
+#print (counts)
+
+for k, v in counts.items():
+	new_tup = (v, k)
+	lst.append (new_tup)
+
+lst = sorted(lst, reverse=True)
+
+for v, k in lst[:10]:
+	print (k, v)
+
+print ('------------------------------------')
+
+e = (sorted([(v, k) for k, v in d.items() ]))
+print (e)
+
+---------------------------------------------------------------------------
+CAPITULO 11: Regular Expressions
+---------------------------------------------------------------------------
+import re
+
+texto = open ("mbox-short.txt")
+
+for lin in texto:
+	if re.search('^From[\S]*:', lin):
+		print (lin)
+
+---------------------------------------------------------------------------
+CAPITULO 12: Network
+---------------------------------------------------------------------------
+import socket 
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect (('data.pr4e.org', 80))
+
+#cmd = 'GET' + user_url + 'HTTP/1.0\r\n\r\n'
+#cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+
+mysock.send(cmd)
+
+while True:
+	data = mysock.recv(512)
+	if len (data) < 1:
+		break
+
+	print(data.decode(),end='')
+
+mysock.close()
+
+-----------------------------------------
+import urllib.request, urllib.parse, urllib.error
+
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+
+counts = dict()
+
+for linea in fhand:
+	words = linea.decode().strip().split()
+
+	for word in words:
+		counts [word] = counts.get (word, 0) + 1
+
+
+print (counts)
+---------------------------------------------------------------------------
+CAPITULO 13: Web Services
+---------------------------------------------------------------------------
+import xml.etree.ElementTree as ET
+
+data = '''
+<person>
+  <name>Chuck</name>
+  <phone type="intl">
+    +1 734 303 4456
+  </phone>
+  <email hide="yes" />
+</person>'''
+
+tree = ET.fromstring(data)
+print('Name:', tree.find('name').text)
+print('Attr:', tree.find('email').get('hide'))
+
+------------------------------
+import json
+
+data = '''
+{
+  "name" : "Chuck",
+  "phone" : {
+    "type" : "intl",
+    "number" : "+1 734 303 4456"
+   },
+   "email" : {
+     "hide" : "yes"
+   }
+}'''
+
+info = json.loads(data)
+print('Name:', info["name"])
+print('Hide:', info["email"]["hide"])
+print('Teléfono:', info["phone"]["number"])
+
+---------------------------
+import json
+
+data = '''
+[
+  { "id" : "001",
+    "x" : "2",
+    "name" : "Chuck"
+  } ,
+  { "id" : "009",
+    "x" : "7",
+    "name" : "Brent"
+  }
+]'''
+
+info = json.loads(data)
+print('User count:', len(info))
+
+for item in info:
+    print('Name', item['name'])
+    print('Id', item['id'])
+    print('Attribute', item['x'])
+
+------------------------------
+(Esto da error por permisos)
+import urllib.request, urllib.parse, urllib.error
+import json
+
+serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1 : break
+
+    url = serviceurl + urllib.parse.urlencode({'address': address})
+    print ('Retrieving', url)
+    uh = urllib.request.urlopen(url)
+    data = uh.read().decode()
+    print ('Retrieved', len(data), 'characters')
+
+    try: 
+      js = json.loads(data)
+    except: 
+      js = None
+      
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print ('==== Failure To Retrieve ====')
+        print (data)
+        continue
+
+    print (json.dumps(js, indent=4))
+
+    lat = js["results"][0]["geometry"]["location"]["lat"]
+    lng = js["results"][0]["geometry"]["location"]["lng"]
+    print ('lat',lat,'lng',lng)
+    location = js['results'][0]['formatted_address']
+    print (location)
+
+-------------------------------------------------
+import urllib.request, urllib.parse, urllib.error
+import json
+import ssl
+
+api_key = False
+# If you have a Google Places API key, enter it here
+# api_key = 'AIzaSy___IDByT70'
+# https://developers.google.com/maps/documentation/geocoding/intro
+
+if api_key is False:
+    api_key = 42
+    serviceurl = 'http://py4e-data.dr-chuck.net/json?'
+else :
+    serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1: break
+
+    parms = dict()
+    parms['address'] = address
+    if api_key is not False: parms['key'] = api_key
+    url = serviceurl + urllib.parse.urlencode(parms)
+
+    print('Retrieving', url) # Imprime todo el Json
+    uh = urllib.request.urlopen(url, context=ctx)
+    data = uh.read().decode()
+    print('Retrieved', len(data), 'characters')
+
+    try:
+        js = json.loads(data)
+    except:
+        js = None
+
+    if not js or 'status' not in js or js['status'] != 'OK':
+        print('==== Failure To Retrieve ====')
+        print(data)
+        continue
+
+    #print(json.dumps(js, indent=4))
+
+    lat = js['results'][0]['geometry']['location']['lat']
+    lng = js['results'][0]['geometry']['location']['lng']
+    print('lat', lat, 'lng', lng)
+    location = js['results'][0]['formatted_address']
+    print(location)
+
+---------------------------------------------------------------------------
+CAPITULO 14: Objects
+---------------------------------------------------------------------------
+class PartyAnimal:
+    x = 0
+
+    def party (self):
+        self.x = self.x + 1
+
+        print ("So far", self.x)
+
+
+an = PartyAnimal()
+an2 = PartyAnimal()
+
+an.party()
+an.party()
+an2.party()
+an.party()
+an2.party()
+
+print (dir(an))
+print (type(an))
+
+print (an.x)
+
+---------------------------------------------------------------------------
+CAPITULO 15: Databases
+---------------------------------------------------------------------------
+import sqlite3
+
+conn = sqlite3.connect('emaildb.sqlite')
+cur = conn.cursor()
+
+cur.execute('DROP TABLE IF EXISTS Counts')
+
+cur.execute('CREATE TABLE Counts (email TEXT, count INTEGER)')
+
+fname = input('Enter file name: ')
+if (len(fname) < 1): fname = 'mbox-short.txt'
+fh = open(fname)
+for line in fh:
+    if not line.startswith('From: '): continue
+    pieces = line.split()
+    email = pieces[1]
+    cur.execute('SELECT count FROM Counts WHERE email = ? ', (email,))
+    row = cur.fetchone()
+    if row is None:
+        cur.execute('''INSERT INTO Counts (email, count)
+                VALUES (?, 1)''', (email,))
+    else:
+        cur.execute('UPDATE Counts SET count = count + 1 WHERE email = ?',
+                    (email,))
+    conn.commit()
+
+# https://www.sqlite.org/lang_select.html
+sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
+
+for row in cur.execute(sqlstr):
+    print(str(row[0]), row[1])
+
+cur.close()
+-----------------------------
+#SELECT title, name FROM Album JOIN Artist ON Artist.id = Album.artist_id
+#SELECT title, name from Track JOIN Genre ON Genre.id = Track.genre_id
+#select Track.title, Artist.name, Album.title, Genre.name from Track join Genre join Album join Artist on Track.genre_id = Genre.id and Track.album_id = Album.id and Album.artist_id = Artist.id
+
+
+import xml.etree.ElementTree as ET
+import sqlite3
+
+conn = sqlite3.connect('canciones2.sqlite')
+cur = conn.cursor()
+
+# Make some fresh tables using executescript()
+cur.executescript('''
+DROP TABLE IF EXISTS Artist;
+DROP TABLE IF EXISTS Album;
+DROP TABLE IF EXISTS Track;
+
+CREATE TABLE Artist (
+    id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    name    TEXT UNIQUE
+);
+
+CREATE TABLE Album (
+    id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    artist_id  INTEGER,
+    title   TEXT UNIQUE
+);
+
+CREATE TABLE Track (
+    id  INTEGER NOT NULL PRIMARY KEY 
+        AUTOINCREMENT UNIQUE,
+    title TEXT  UNIQUE,
+    album_id  INTEGER,
+    len INTEGER, rating INTEGER, count INTEGER
+);
+''')
+
+
+fname = input('Enter file name: ')
+if ( len(fname) < 1 ) : fname = 'Library.xml'
+
+# <key>Track ID</key><integer>369</integer>
+# <key>Name</key><string>Another One Bites The Dust</string>
+# <key>Artist</key><string>Queen</string>
+def lookup(d, key):
+    found = False
+    for child in d:
+        if found : return child.text
+        if child.tag == 'key' and child.text == key :
+            found = True
+    return None
+
+stuff = ET.parse(fname)
+all = stuff.findall('dict/dict/dict')
+print('Dict count:', len(all))
+for entry in all:
+    if ( lookup(entry, 'Track ID') is None ) : continue
+
+    name = lookup(entry, 'Name')
+    artist = lookup(entry, 'Artist')
+    album = lookup(entry, 'Album')
+    count = lookup(entry, 'Play Count')
+    rating = lookup(entry, 'Rating')
+    length = lookup(entry, 'Total Time')
+
+    if name is None or artist is None or album is None : 
+        continue
+
+    print(name, artist, album, count, rating, length)
+
+    cur.execute('''INSERT OR IGNORE INTO Artist (name) 
+        VALUES ( ? )''', ( artist, ) )
+    cur.execute('SELECT id FROM Artist WHERE name = ? ', (artist, ))
+    artist_id = cur.fetchone()[0]
+
+    cur.execute('''INSERT OR IGNORE INTO Album (title, artist_id) 
+        VALUES ( ?, ? )''', ( album, artist_id ) )
+    cur.execute('SELECT id FROM Album WHERE title = ? ', (album, ))
+    album_id = cur.fetchone()[0]
+
+    cur.execute('''INSERT OR REPLACE INTO Track
+        (title, album_id, len, rating, count) 
+        VALUES ( ?, ?, ?, ?, ? )''', 
+        ( name, album_id, length, rating, count ) )
+
+    conn.commit()
+
+----------------------
+
+
