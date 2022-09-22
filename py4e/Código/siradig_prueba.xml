@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentacion>
+	<periodo>2022</periodo>
+	<nroPresentacion>13</nroPresentacion>
+	<fechaPresentacion>2022-08-16</fechaPresentacion>
+	<empleado>
+		<cuit>20222222229</cuit>
+		<tipoDoc>86</tipoDoc>
+		<apellido>PRUEBA RODRIGO</apellido>
+		<nombre></nombre>
+		<direccion>
+			<provincia>1</provincia>
+			<cp>1712</cp>
+			<localidad>CASTELAR</localidad>
+			<calle>SARMIENTO</calle>
+			<nro>888</nro>
+		</direccion>
+	</empleado>
+	<deducciones>
+		<deduccion tipo="7">
+			<tipoDoc>80</tipoDoc>
+			<nroDoc>20111111112</nroDoc>
+			<denominacion>PRUEBA PRUEBA DANIEL</denominacion>
+			<descBasica>20111111112 - PRUEBA PRUEBA DANIEL</descBasica>
+			<montoTotal>10400</montoTotal>
+			<periodos>
+				<periodo mesDesde="2" mesHasta="2" montoMensual="4000.00"/>
+				<periodo mesDesde="5" mesHasta="5" montoMensual="1600.00"/>
+				<periodo mesDesde="6" mesHasta="6" montoMensual="3200.00"/>
+				<periodo mesDesde="7" mesHasta="7" montoMensual="1600.00"/>
+			</periodos>
+		</deduccion>
+		<deduccion tipo="21">
+			<tipoDoc>80</tipoDoc>
+			<nroDoc>30333333333</nroDoc>
+			<denominacion>PRUEBA S A</denominacion>
+			<descBasica>30333333333 - PRUEBA SA</descBasica>
+			<montoTotal>10500</montoTotal>
+			<periodos>
+				<periodo mesDesde="1" mesHasta="1" montoMensual="10500.00"/>
+			</periodos>
+		</deduccion>
+		<deduccion tipo="21">
+			<tipoDoc>80</tipoDoc>
+			<nroDoc>30333333333</nroDoc>
+			<denominacion>PRUEBA SA</denominacion>
+			<descBasica>30333333333 - PRUEBA SA</descBasica>
+			<montoTotal>27810.28</montoTotal>
+			<periodos>
+				<periodo mesDesde="1" mesHasta="1" montoMensual="3265.80"/>
+				<periodo mesDesde="2" mesHasta="2" montoMensual="3265.80"/>
+				<periodo mesDesde="3" mesHasta="3" montoMensual="3265.80"/>
+				<periodo mesDesde="4" mesHasta="4" montoMensual="3342.00"/>
+				<periodo mesDesde="5" mesHasta="5" montoMensual="3342.00"/>
+				<periodo mesDesde="6" mesHasta="6" montoMensual="3659.47"/>
+				<periodo mesDesde="7" mesHasta="7" montoMensual="3659.47"/>
+				<periodo mesDesde="8" mesHasta="8" montoMensual="4009.94"/>
+			</periodos>
+		</deduccion>
+		<deduccion tipo="21">
+			<tipoDoc>80</tipoDoc>
+			<nroDoc>30717330648</nroDoc>
+			<denominacion>TECNOLOGIA OLIVOS SRL</denominacion>
+			<descBasica>30717330648 - TECNOLOGIA OLIVOS SRL</descBasica>
+			<montoTotal>56434</montoTotal>
+			<periodos>
+				<periodo mesDesde="7" mesHasta="7" montoMensual="56434.00"/>
+			</periodos>
+		</deduccion>
+	</deducciones>
+</presentacion>
