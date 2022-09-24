@@ -84,3 +84,10 @@ for entry in all:
                 (name, album_id, length, rating, count))
 
     conn.commit()
+
+    # SQL for complete list of tracks
+    '''
+    SELECT Album.title, Artist.name, Track.title
+    FROM Album JOIN Artist JOIN Track
+    ON Track.album_id = Album.id AND Album.artist_id = Artist.id
+    '''
