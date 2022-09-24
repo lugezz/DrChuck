@@ -1,9 +1,8 @@
-from urllib.request import urlopen
-import urllib.error
-import twurl
 import json
 import sqlite3
 import ssl
+import twurl
+from urllib.request import urlopen
 
 TWITTER_URL = 'https://api.twitter.com/1.1/friends/list.json'
 
@@ -21,12 +20,13 @@ ctx.verify_mode = ssl.CERT_NONE
 
 while True:
     acct = input('Enter a Twitter account, or quit: ')
-    if (acct == 'quit'): break
+    if (acct == 'quit'):
+        break
     if (len(acct) < 1):
         cur.execute('SELECT name FROM Twitter WHERE retrieved = 0 LIMIT 1')
         try:
             acct = cur.fetchone()[0]
-        except:
+        except Exception:
             print('No unretrieved Twitter accounts found')
             continue
 
@@ -55,7 +55,7 @@ while True:
             cur.execute('UPDATE Twitter SET friends = ? WHERE name = ?',
                         (count+1, friend))
             countold = countold + 1
-        except:
+        except Exception:
             cur.execute('''INSERT INTO Twitter (name, retrieved, friends)
                         VALUES (?, 0, 1)''', (friend, ))
             countnew = countnew + 1
