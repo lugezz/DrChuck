@@ -1,7 +1,7 @@
-import urllib.request, urllib.parse, urllib.error
-import twurl
 import json
 import ssl
+import twurl
+from urllib import request
 
 # https://apps.twitter.com/
 # Create App and get the four strings, put them in hidden.py
@@ -16,11 +16,12 @@ ctx.verify_mode = ssl.CERT_NONE
 while True:
     print('')
     acct = input('Enter Twitter Account:')
-    if (len(acct) < 1): break
+    if (len(acct) < 1):
+        break
     url = twurl.augment(TWITTER_URL,
                         {'screen_name': acct, 'count': '5'})
     print('Retrieving', url)
-    connection = urllib.request.urlopen(url, context=ctx)
+    connection = request.urlopen(url, context=ctx)
     data = connection.read().decode()
 
     js = json.loads(data)
